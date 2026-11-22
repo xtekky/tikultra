@@ -1,0 +1,59 @@
+[build-system]
+requires      = ['hatchling>=1.24']
+build-backend = 'hatchling.build'
+
+[project]
+name            = 'tikultra'
+version         = '1.0.0'
+description     = 'TikTok API for Python: videos, profiles, comments, followers, search, TikTok Shop, LIVE and request signing. Sync and async, fully typed.'
+readme          = 'README.md'
+license         = { file = 'LICENSE' }
+requires-python = '>=3.10'
+authors         = [
+    { name = 'TikUltra' },
+]
+keywords        = [
+    'tiktok',
+    'tiktok-api',
+    'tiktok-scraper',
+    'tiktok-shop',
+    'tiktok-shop-api',
+    'tiktok-live',
+    'tiktok-downloader',
+    'douyin',
+    'tikultra',
+    'sdk',
+]
+classifiers     = [
+    'Development Status :: 5 - Production/Stable',
+    'Intended Audience :: Developers',
+    'License :: OSI Approved :: MIT License',
+    'Programming Language :: Python :: 3',
+    'Programming Language :: Python :: 3.10',
+    'Programming Language :: Python :: 3.11',
+    'Programming Language :: Python :: 3.12',
+    'Programming Language :: Python :: 3.13',
+    'Typing :: Typed',
+]
+dependencies    = [
+    'httpx>=0.27.0,<1.0.0',
+]
+
+[project.optional-dependencies]
+dev = [
+    'pytest>=8.0.0',
+]
+
+[project.urls]
+Homepage      = 'https://tikultra.com'
+Documentation = 'https://tikultra.com/docs'
+Repository    = 'https://github.com/tikultra/tiktok-api-python'
+Issues        = 'https://github.com/tikultra/tiktok-api-python/issues'
+Changelog     = 'https://tikultra.com/changelog'
+Status        = 'https://tikultra.com/status'
+
+[tool.hatch.build.targets.wheel]
+packages = ['src/tikultra']
+
+[tool.pytest.ini_options]
+testpaths = ['tests']
