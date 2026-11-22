@@ -5,7 +5,7 @@ build-backend = 'hatchling.build'
 [project]
 name            = 'tikultra'
 version         = '1.0.0'
-description     = 'TikTok API for Python: videos, profiles, comments, followers, search, TikTok Shop, LIVE and request signing. Sync and async, fully typed.'
+description     = 'TikTok API for Python: TikTok Shop API, managed TikTok accounts (login, upload, comments, DMs, LIVE), scraping (videos, profiles, comments, followers, search) and X-Argus signing.'
 readme          = 'README.md'
 license         = { file = 'LICENSE' }
 requires-python = '>=3.10'
@@ -19,6 +19,9 @@ keywords        = [
     'tiktok-shop',
     'tiktok-shop-api',
     'tiktok-live',
+    'tiktok-uploader',
+    'tiktok-automation',
+    'x-argus',
     'tiktok-downloader',
     'douyin',
     'tikultra',
@@ -47,8 +50,8 @@ dev = [
 [project.urls]
 Homepage      = 'https://tikultra.com'
 Documentation = 'https://tikultra.com/docs'
-Repository    = 'https://github.com/tikultra/tiktok-api-python'
-Issues        = 'https://github.com/tikultra/tiktok-api-python/issues'
+Repository    = 'https://github.com/xtekky/tikultra-sdk'
+Issues        = 'https://github.com/xtekky/tikultra-sdk/issues'
 Changelog     = 'https://tikultra.com/changelog'
 Status        = 'https://tikultra.com/status'
 

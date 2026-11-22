@@ -1,6 +1,6 @@
 <p align="center">
   <a href="https://tikultra.com/tiktok-api?utm_source=github&utm_medium=readme&utm_campaign=python">
-    <img src="assets/banner.png" alt="TikTok API for Python — tikultra SDK: videos, profiles, comments, TikTok Shop, LIVE and request signing" width="100%">
+    <img src="assets/banner.png" alt="TikTok API for Python — TikTok Shop API, managed TikTok accounts, scraping and X-Argus signing (tikultra SDK)" width="100%">
   </a>
 </p>
 
@@ -8,7 +8,7 @@
 
 <p align="center">
   The Python client for <a href="https://tikultra.com/tiktok-api">Tikultra</a>, an unofficial TikTok API built on TikTok’s native mobile app API.<br>
-  Scrape videos, profiles, comments, followers and search, read <b>TikTok Shop</b> and <b>LIVE</b>, download without watermark, and sign mobile requests — sync or async, fully typed.
+  <b>TikTok Shop API</b>, <b>managed TikTok accounts</b> (login, upload, comments, DMs, LIVE) and scraping for videos, profiles, comments, followers and search — plus native <b>X-Argus</b> signing. Sync or async, fully typed.
 </p>
 
 <p align="center">
@@ -24,14 +24,17 @@
   <a href="https://tikultra.com/docs/python-sdk">Docs</a> ·
   <a href="https://tikultra.com/endpoints">All endpoints</a> ·
   <a href="https://tikultra.com/playground">Playground</a> ·
-  <a href="https://github.com/tikultra/tiktok-api-node">Node.js SDK</a>
+  <a href="https://github.com/xtekky/tikultra-ts-sdk">Node.js SDK</a>
 </p>
 
 ---
 
 ## Why this TikTok API
 
-- **230+ endpoints on one key** — videos, profiles, posts, comments, followers, search, hashtags, sounds, TikTok Shop, LIVE, Douyin and more.
+- **Managed TikTok accounts** — sign in, upload, comment, DM and go LIVE on the accounts you own, each on its own isolated device. No other TikTok API offers this.
+- **TikTok Shop API** — full product pages (every SKU price, voucher, shipping promise), sellers, reviews, creator showcases, LIVE shopping bags and visual product search.
+- **230+ endpoints on one key** — videos, profiles, posts, comments, followers, search, hashtags, sounds, LIVE, Douyin and more.
+- **Native mobile signing** — X-Argus, X-Gorgon, X-Ladon and X-Khronos for 8 TikTok apps in under a millisecond.
 - **No browsers, proxies or signatures to maintain** — requests go through TikTok’s mobile API from managed devices; you get JSON.
 - **Failed calls are free** — you only pay for successful calls. Start with 500 free requests, no card.
 - **Sync and async** — `TikUltra` and `AsyncTikUltra` on `httpx`, typed (`py.typed`), Python 3.10+.
@@ -64,7 +67,71 @@ profile = client.user.profile("tiktok")
 print(profile["user"]["follower_count"])
 ```
 
-## What you can do
+## Managed TikTok accounts (the part nobody else has)
+
+Run the TikTok accounts you own from code. Each connected account gets its own dedicated, isolated mobile device context, so it behaves like one phone, not a script.
+
+| Action | Method | Guide |
+| :--- | :--- | :--- |
+| Sign in with a one-time email code | `client.account.login_otp_send()`, `client.account.login_otp_verify()` | [TikTok login API](https://tikultra.com/tiktok-login-api) |
+| Import a session you already have | `client.account.import_session()` | [Managed accounts](https://tikultra.com/tiktok-managed-accounts) |
+| Upload and publish videos and photo carousels | `client.account.upload_video()`, `client.account.upload_slideshow()` | [TikTok upload API](https://tikultra.com/tiktok-upload-api) |
+| Reply to comments on your posts | `client.account.comment()` | [TikTok comment API](https://tikultra.com/tiktok-comment-api) |
+| Read and answer DMs | `client.account.dm_send()` | [TikTok DM API](https://tikultra.com/tiktok-dm-api) |
+| Go LIVE with an RTMP URL and stream key | `client.account.live_start()`, `client.account.live_ping()` | [TikTok stream key](https://tikultra.com/tiktok-stream-key) |
+| Read Creator Studio analytics | `client.account.studio_overview()` | [Managed accounts](https://tikultra.com/tiktok-managed-accounts) |
+
+```python
+from tikultra import TikUltra
+
+client = TikUltra()
+
+# 1. Sign in to an account you own (or: client.account.import_session("<sessionid>"))
+ctx = client.account.login_otp_send("you@yourbrand.com")
+acc = client.account.login_otp_verify("you@yourbrand.com", "123456", context_id=ctx["context_id"])
+account_id = acc["account_id"]
+
+# 2. Publish a video in one call
+post = client.account.upload_video(
+    account_id=account_id,
+    file="./launch.mp4",
+    caption="Launch day #desksetup",
+    visibility="public",
+)
+print(post["share_url"])
+
+# 3. Answer comments
+client.account.comment(account_id, post["aweme_id"], "Thanks for watching!")
+
+# 4. Go LIVE from OBS or ffmpeg
+room = client.account.live_start(account_id, "Unboxing the new keyboards")
+print(room["rtmp_push_url"], room["stream_key"])
+```
+
+Managed accounts are on Starter and up. They run only on accounts you own or are authorized to manage.
+
+## TikTok Shop API
+
+Read TikTok Shop the way shoppers see it in the app — any product, seller, review, creator showcase or LIVE shopping bag. No seller account, no Partner Center approval.
+
+```python
+hits = client.shop.search("mechanical keyboard")              # product cards with product_id, seller_id
+product_id = hits["products"][0]["product_id"]
+
+pdp = client.shop.pdp(product_id)                             # SKUs, prices, vouchers, shipping, rating
+print(pdp["data"]["reviews"]["product_rating"], pdp["data"]["reviews"]["review_count"])
+
+for page in client.paginate("/v1/shop/reviews", params={"product_id": product_id}, max_pages=3):
+    for r in page["reviews"]:
+        print(r["review"]["display_text"][:80])
+
+seller = client.shop.seller(hits["products"][0]["seller_id"])  # a store's catalog
+matches = client.search.vision(image_url="https://example.com/keyboard.jpg")  # find products from a photo
+```
+
+Guides: [TikTok Shop API](https://tikultra.com/tiktok-shop-api) · [TikTok Shop scraper](https://tikultra.com/tiktok-shop-scraper) · [Product data](https://tikultra.com/tiktok-shop-product-api) · [Reviews](https://tikultra.com/tiktok-shop-reviews-scraper) · [Shop analytics](https://tikultra.com/tiktok-shop-analytics-api)
+
+## Everything else you can do
 
 | Task | Method | Guide |
 | :--- | :--- | :--- |
@@ -180,7 +247,7 @@ The client retries `429`, `502`, `503` and `504` with backoff (honouring `Retry-
 
 ## Related
 
-- [tiktok-api-node](https://github.com/tikultra/tiktok-api-node) — the same API for Node.js, Bun, Deno and edge runtimes
+- [tikultra-ts-sdk](https://github.com/xtekky/tikultra-ts-sdk) — the same API for Node.js, Bun, Deno and edge runtimes
 - [TikTok API guides](https://tikultra.com/tiktok-api) · [Blog](https://tikultra.com/blog) · [llms.txt](https://tikultra.com/llms.txt)
 
 ## License
