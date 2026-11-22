@@ -95,7 +95,8 @@ def resolve_api_key(explicit_key: str | None) -> str:
         if env_val != '':
             return env_val
     raise AuthenticationError(
-        'Missing TikUltra API key: pass api_key=... or set TIKULTRA_KEY in your environment.',
+        'Missing TikUltra API key. Get a free API key (500 requests, no card) at https://tikultra.com/signup?ref=pypi '
+        'then pass api_key=... or set TIKULTRA_KEY in your environment.',
         status_code = 401,
         code        = 'missing_api_key',
     )

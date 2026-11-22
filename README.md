@@ -1,4 +1,8 @@
 <p align="center">
+  <a href="https://tikultra.com/signup?ref=github-python"><img src="assets/offer.png" alt="Get your free Tikultra API key: 500 free requests on the TikTok API, no card" width="100%"></a>
+</p>
+
+<p align="center">
   <a href="https://tikultra.com/tiktok-api?utm_source=github&utm_medium=readme&utm_campaign=python">
     <img src="assets/banner.png" alt="TikTok API for Python — TikTok Shop API, managed TikTok accounts, scraping and X-Argus signing (tikultra SDK)" width="100%">
   </a>
@@ -20,12 +24,15 @@
 </p>
 
 <p align="center">
-  <a href="https://tikultra.com/signup?utm_source=github&utm_medium=readme&utm_campaign=python"><b>Get a free API key</b></a> ·
+  <a href="https://tikultra.com/signup?ref=github-python"><b>Get a free API key</b></a> ·
   <a href="https://tikultra.com/docs/python-sdk">Docs</a> ·
   <a href="https://tikultra.com/endpoints">All endpoints</a> ·
   <a href="https://tikultra.com/playground">Playground</a> ·
   <a href="https://github.com/xtekky/tikultra-ts-sdk">Node.js SDK</a>
 </p>
+
+> [!TIP]
+> **Free API key:** [sign up here](https://tikultra.com/signup?ref=github-python) and get **500 requests, no card**. Plans from $49/month with managed accounts and TikTok Shop; failed calls are never billed. Run `python -m tikultra` after installing to check your setup.
 
 ---
 
@@ -66,6 +73,20 @@ print(stats["play_count"], stats["digg_count"])
 profile = client.user.profile("tiktok")
 print(profile["user"]["follower_count"])
 ```
+
+## What people build with it
+
+- **Theme pages and clipping networks:** run a fleet of your own accounts, each on its own device, publish on schedule and track first-hour velocity per post.
+- **Winning-product and affiliate spying:** find TikTok Shop products while review counts are still climbing, and see which creators and LIVE sellers push them.
+- **Douyin-to-TikTok trend arbitrage:** watch Douyin’s hot search and music boards and bring formats and sounds to TikTok before they cross over.
+- **Shadowban and reach checks:** test whether an account still shows in search and For You, and compare posts’ distribution.
+- **Rare username hunting:** check hundreds of handles for availability in one call and switch your own account to the one you want.
+- **Geo For You research:** see what the For You feed shows in 84 cities for a niche, from a device in that city.
+- **Comment lead mining:** pull questions and purchase-intent comments from competitors’ videos.
+- **Downloader and repost bots:** Discord and Telegram bots that turn links into clean, no-watermark files.
+- **Agencies:** publishing, comment replies, DMs and LIVE for every client account from one dashboard.
+
+**Why it wins:** more TikTok endpoints than any other TikTok API (230+), the only one that can operate accounts (post, reply, DM, go LIVE), native X-Argus signing in under a millisecond, up to 250 requests per second on Scale, and about a third cheaper per call than ScrapeCreators. Failed calls are never billed.
 
 ## Managed TikTok accounts (the part nobody else has)
 
