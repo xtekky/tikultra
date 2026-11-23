@@ -8,11 +8,13 @@ uploads the package to PyPI. No API token is stored in GitHub; PyPI trusts this 
 1. Sign in at https://pypi.org (turn on 2FA, PyPI requires it).
 2. Go to **Your account → Publishing → Add a new pending publisher** and fill in:
    - PyPI project name: `tikultra`
-   - Owner: `xtekky` · Repository: `tikultra-sdk`
+   - Owner: `xtekky` · Repository: `tikultra`
    - Workflow name: `release.yml` · Environment: `pypi`
 3. In GitHub: **Settings → Environments → New environment → `pypi`** (optionally require your approval).
 
 The first release creates the `tikultra` project on PyPI and turns the pending publisher into a normal one.
+If this repository is ever renamed, edit the publisher on PyPI (project `tikultra` → Settings → Publishing) to the new
+name, and update `REPO` in `scripts/pypi_readme.py` and the URLs in `pyproject.toml`.
 
 ## Every release
 

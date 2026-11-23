@@ -1,10 +1,10 @@
 <p align="center">
-  <a href="https://tikultra.com/signup?ref=pypi"><img src="https://raw.githubusercontent.com/xtekky/tikultra-sdk/main/assets/offer.png" alt="Get your free Tikultra API key: 500 free requests on the TikTok API, no card" width="100%"></a>
+  <a href="https://tikultra.com/signup?ref=pypi"><img src="https://raw.githubusercontent.com/xtekky/tikultra/main/assets/offer.png" alt="Get your free Tikultra API key: 500 free requests on the TikTok API, no card" width="100%"></a>
 </p>
 
 <p align="center">
   <a href="https://tikultra.com/tiktok-api?utm_source=pypi&utm_medium=readme&utm_campaign=python">
-    <img src="https://raw.githubusercontent.com/xtekky/tikultra-sdk/main/assets/banner.png" alt="TikTok API for Python — TikTok Shop API, managed TikTok accounts, scraping and X-Argus signing (tikultra SDK)" width="100%">
+    <img src="https://raw.githubusercontent.com/xtekky/tikultra/main/assets/banner.png" alt="TikTok API for Python — TikTok Shop API, managed TikTok accounts, scraping and X-Argus signing (tikultra SDK)" width="100%">
   </a>
 </p>
 
@@ -18,7 +18,7 @@
 <p align="center">
   <a href="https://pypi.org/project/tikultra/"><img src="https://img.shields.io/pypi/v/tikultra?color=7c65ff&label=pypi" alt="PyPI version"></a>
   <a href="https://pypi.org/project/tikultra/"><img src="https://img.shields.io/pypi/pyversions/tikultra?color=7c65ff" alt="Python versions"></a>
-  <a href="https://github.com/xtekky/tikultra-sdk/blob/main/LICENSE"><img src="https://img.shields.io/badge/license-MIT-7c65ff" alt="MIT license"></a>
+  <a href="https://github.com/xtekky/tikultra/blob/main/LICENSE"><img src="https://img.shields.io/badge/license-MIT-7c65ff" alt="MIT license"></a>
   <a href="https://tikultra.com/docs/python-sdk"><img src="https://img.shields.io/badge/docs-tikultra.com-7c65ff" alt="Documentation"></a>
   <a href="https://tikultra.com/status"><img src="https://img.shields.io/badge/status-live-3dd68c" alt="API status"></a>
 </p>
@@ -273,6 +273,6 @@ The client retries `429`, `502`, `503` and `504` with backoff (honouring `Retry-
 
 ## License
 
-MIT — see [LICENSE](https://github.com/xtekky/tikultra-sdk/blob/main/LICENSE).
+MIT — see [LICENSE](https://github.com/xtekky/tikultra/blob/main/LICENSE).
 
 Tikultra is independent and is not affiliated with, endorsed or sponsored by TikTok or ByteDance. Use it in line with the law where you operate, TikTok’s terms and the [acceptable use policy](https://tikultra.com/acceptable-use).

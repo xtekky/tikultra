@@ -50,8 +50,8 @@ dev = [
 [project.urls]
 Homepage      = 'https://tikultra.com'
 Documentation = 'https://tikultra.com/docs'
-Repository    = 'https://github.com/xtekky/tikultra-sdk'
-Issues        = 'https://github.com/xtekky/tikultra-sdk/issues'
+Repository    = 'https://github.com/xtekky/tikultra'
+Issues        = 'https://github.com/xtekky/tikultra/issues'
 Changelog     = 'https://tikultra.com/changelog'
 Status        = 'https://tikultra.com/status'
 

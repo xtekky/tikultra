@@ -12,7 +12,7 @@ import re
 
 ROOT = pathlib.Path(__file__).resolve().parent.parent
 SITE = 'https://tikultra.com'
-REPO = 'xtekky/tikultra-sdk'
+REPO = 'xtekky/tikultra'
 RAW = f'https://raw.githubusercontent.com/{REPO}/main'
 BLOB = f'https://github.com/{REPO}/blob/main'
 
