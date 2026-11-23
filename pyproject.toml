@@ -6,7 +6,7 @@ build-backend = 'hatchling.build'
 name            = 'tikultra'
 version         = '1.0.0'
 description     = 'TikTok API for Python: TikTok Shop API, managed TikTok accounts (login, upload, comments, DMs, LIVE), scraping (videos, profiles, comments, followers, search) and X-Argus signing.'
-readme          = 'README.md'
+readme          = 'README.pypi.md'
 license         = { file = 'LICENSE' }
 requires-python = '>=3.10'
 authors         = [
@@ -57,6 +57,9 @@ Status        = 'https://tikultra.com/status'
 
 [tool.hatch.build.targets.wheel]
 packages = ['src/tikultra']
+
+[tool.hatch.build.targets.sdist]
+exclude = ['assets', '.github', 'uv.lock']
 
 [tool.pytest.ini_options]
 testpaths = ['tests']

@@ -24,3 +24,10 @@ gh release create v1.0.1 --generate-notes
 ```
 
 Watch it with `gh run watch`. The workflow refuses to publish if the tag and the version differ.
+
+## The PyPI page
+
+PyPI shows `README.pypi.md`, which `scripts/pypi_readme.py` builds from `README.md` (the release workflow runs it).
+It turns repo-relative images and links into github.com URLs, which load once this repo is public. If a linked
+tikultra.com page is not live when you release, add it to `FALLBACK` in that script. PyPI freezes the page for each
+version, so a README fix needs a new version.
